@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
 import RecapPage from './RecapPage';
-import TryAgainPage from './TryAgainPage'; // ✅ Import TryAgainPage
+import TryAgainPage from './TryAgainPage';
 import YesPage from './YesPage';
 import ListenPage from './ListenPage';
 import MemoriesPage from './MemoriesPage';
 
-function ChatPage() {
-    const handleRecapClick = () => {
-        window.open("/recap", "_blank");
-    };
+function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<ChatPage />} />
+                <Route path="/recap" element={<RecapPage />} />
+                <Route path="/try-again" element={<TryAgainPage />} />
+                <Route path="/yes" element={<YesPage />} />
+                <Route path="/listen" element={<ListenPage />} />
+                <Route path="/memories" element={<MemoriesPage />} />
+            </Routes>
+        </Router>
+    );
+}
 
-    React.useEffect(() => {
+// ✅ ChatPage is now inside App.js
+function ChatPage() {
+    useEffect(() => {
         document.title = "Can";
     }, []);
+
+    const handleRecapClick = () => {
+        window.open(window.location.origin + "/recap", "_blank"); // ✅ Opens /recap in a new tab
+    };
 
     return (
         <div className="container">
@@ -31,7 +47,7 @@ function ChatPage() {
                     <div className="battery"></div>
                 </div>
 
-                <motion.div className="message left" initial={{ x: '-100vw', opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1.5, delay: 0 }}>
+                <motion.div className="message left" initial={{ x: '-100vw', opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1.5 }}>
                     hii u look cute
                 </motion.div>
 
@@ -52,21 +68,6 @@ function ChatPage() {
                 </button>
             </div>
         </div>
-    );
-}
-
-function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<ChatPage />} />
-                <Route path="/recap" element={<RecapPage />} />
-                <Route path="/try-again" element={<TryAgainPage />} /> {/* ✅ Now this will work */}
-                <Route path="/yes" element={<YesPage />} />
-                <Route path="/listen" element={<ListenPage />} />
-                <Route path="/memories" element={<MemoriesPage />} />
-            </Routes>
-        </Router>
     );
 }
 

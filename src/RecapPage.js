@@ -4,13 +4,12 @@ import ShootingStars from "./ShootingStars";
 
 function RecapPage() {
   const [showButton, setShowButton] = useState(false);
-  const [audio] = useState(new Audio("/dandelions.mp3"));
+  const [audio] = useState(() => new Audio("/dandelions.mp3")); // ✅ Prevent unnecessary re-creation of audio
 
   useEffect(() => {
     document.title = "We";
     audio.loop = true;
 
-    // Try to autoplay the audio
     const tryAutoplay = () => {
       audio.play().catch(() => {
         console.warn("Autoplay blocked. Waiting for user interaction.");
@@ -19,7 +18,6 @@ function RecapPage() {
 
     tryAutoplay();
 
-    // Resume audio on click/touch if blocked
     const enableAudio = () => {
       audio.play();
       document.removeEventListener("click", enableAudio);
@@ -29,10 +27,9 @@ function RecapPage() {
     document.addEventListener("click", enableAudio);
     document.addEventListener("touchstart", enableAudio);
 
-    // **Pause when the user leaves the tab**
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        audio.pause(); // Pause when tab is hidden
+        audio.pause();
       } else {
         audio.play().catch(() => console.warn("Autoplay blocked again."));
       }
@@ -40,15 +37,13 @@ function RecapPage() {
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // ✅ **Show button after 30 seconds**
-    const timer = setTimeout(() => {
-      setShowButton(true);
-    }, 10000);
+    // ✅ Show button after 10 seconds
+    const timer = setTimeout(() => setShowButton(true), 10000);
 
     return () => {
       audio.pause();
       audio.currentTime = 0;
-      clearTimeout(timer); // Clear timeout to prevent memory leaks
+      clearTimeout(timer);
       document.removeEventListener("click", enableAudio);
       document.removeEventListener("touchstart", enableAudio);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
@@ -56,7 +51,7 @@ function RecapPage() {
   }, [audio]);
 
   const handleTryAgainClick = () => {
-    window.open("/try-again", "_blank"); // ✅ Open in a new tab
+    window.open(window.location.origin + "/try-again", "_blank"); // ✅ Ensures full URL
   };
 
   return (
@@ -70,13 +65,13 @@ function RecapPage() {
           I never told you, but I couldn't take my eyes off you for a full two minutes before I finally texted you I was there.
         </p>
         <p className="recap-memory">
-          I remember you texted me "ily" that day. You might regret those words, but my only regret is not saying them first.  
+          I remember you texted me "ily" that day. You might regret those words, but my only regret is not saying them first.
           I miss missing you.
         </p>
         <p className="recap-memory">I miss missing you.</p>
         <p className="recap-feeling">You're in my head more than I w..</p>
 
-        {/* ✅ Show button after 30 seconds */}
+        {/* ✅ Show button after 10 seconds */}
         {showButton && (
           <button className="try-again-button" onClick={handleTryAgainClick}>
             Let's see the options you got
