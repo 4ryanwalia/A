@@ -1,0 +1,66 @@
+.memories-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    background: #1a1a2e;
+    color: white;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Background Animation */
+  .animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.8) 10%, rgba(26, 26, 46, 0.8) 80%);
+    animation: fadeIn 3s ease-in-out infinite alternate;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .memories-heading, .memories-subheading, .memories-message, .memories-final-message {
+    opacity: 0;
+    animation: fadeInText 3s ease-in-out forwards;
+  }
+  
+  @keyframes fadeInText {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .spotify-link {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #ff4a57;
+    text-decoration: none;
+    background: rgba(255, 74, 87, 0.2);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .spotify-link:hover {
+    background: rgba(255, 74, 87, 0.5);
+    transform: scale(1.1);
+  }
+  
