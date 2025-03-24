@@ -66,7 +66,6 @@ function RecapPage() {
         </p>
         <p className="recap-memory">
           I remember you texted me "ily" that day. You might regret those words, but my only regret is not saying them first.
-          I miss missing you.
         </p>
         <p className="recap-memory">I miss missing you.</p>
         <p className="recap-feeling">You're in my head more than I w..</p>
