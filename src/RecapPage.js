@@ -59,6 +59,7 @@ function RecapPage() {
     <div className="recap-container">
       <ShootingStars />
       <div className="recap-content">
+<<<<<<< HEAD
        <h1>A Moment Remembered</h1>
 <p className="recap-date">April 23rd - 10:51 AM</p>
 <p className="recap-memory">
@@ -74,6 +75,19 @@ function RecapPage() {
         <p className="recap-feeling">You're in my head more than I w...</p>
         <p className="recap-feeling">clickk the button</p>
       
+=======
+        <h1>A Moment Remembered</h1>
+        <p className="recap-date">April 23rd - 10:51 AM</p>
+        <p className="recap-memory">
+          When I saw you in real life, and you were out of this world in that white top and specs...
+          I never told you, but I couldn't take my eyes off you for a full two minutes before I finally texted you I was there.
+        </p>
+        <p className="recap-memory">
+          I remember you texted me "ily" that day. You might regret those words, but my only regret is not saying them first.
+        </p>
+        <p className="recap-memory">I miss missing you.</p>
+        <p className="recap-feeling">You're in my head more than I w..</p>
+>>>>>>> 9b3b466692d3fa61708526607afd0fea445ec46e
 
         {/* ✅ Show button after 10 seconds */}
         {showButton && (
