@@ -7,7 +7,7 @@ function Listen() {
     document.title = "Oh, You Sure?";
   }, []);
 
-  const [audio] = useState(new Audio("/happy-ever.mp3"));
+  const [audio] = useState(new Audio("happy-ever.mp3")); // Ensure the file is in public/
 
   useEffect(() => {
     audio.loop = true;
@@ -31,7 +31,7 @@ function Listen() {
     document.addEventListener("click", enableAudio);
     document.addEventListener("touchstart", enableAudio);
 
-    // **Pause music when the user leaves the tab**
+    // Pause music when the user leaves the tab
     const handleVisibilityChange = () => {
       if (document.hidden) {
         audio.pause();
@@ -58,22 +58,49 @@ function Listen() {
 
   return (
     <div className="listen-container">
+      {/* Generating multiple falling images */}
+      {[...Array(15)].map((_, i) => {
+        const randomX = Math.random() * 100 + "vw"; // Random horizontal position
+        const randomDuration = Math.random() * 3 + 2 + "s"; // Random fall speed
+        return (
+          <motion.img
+            key={i}
+            src="shoot.png"
+            className="falling-image"
+            style={{
+              "--random-x": randomX,
+              "--random-duration": randomDuration,
+            }}
+          />
+        );
+      })}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="listen-heading"
       >
-        Oh, you sure? You’ll miss a lot...
+        Oh, you sure? You’ll miss a lot like...
       </motion.h1>
 
       <motion.p
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
+        transition={{ duration: 1.5, delay: 0.7 }}
         className="listen-text"
       >
-        A half-mentally person like me and Shadow.
+        A half-mentally person like me and Shadow.(dekh le)
+
+      </motion.p>
+      
+      <motion.p
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, delay: 0.7 }}
+        className="listen-text"
+      >
+        click the button below one last time
+        
       </motion.p>
 
       <motion.button

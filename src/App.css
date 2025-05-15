@@ -118,7 +118,12 @@
     .bar-3 { height: 10px; }
     .bar-4 { height: 13px; }
 
+/* Recap Button Styling */
 .recap-button {
+  position: absolute;
+  bottom: 20px; /* Stick to the bottom of the container */
+  left: 50%; /* Horizontally center the button */
+  transform: translateX(-50%); /* Adjust to exact center */
   background-color: #ff69b4; /* Pink background */
   color: white;
   padding: 12px 24px;
@@ -126,34 +131,22 @@
   border-radius: 25px; /* Rounded corners */
   cursor: pointer;
   font-size: 1.1rem;
-  margin-top: 20px;
-  align-self: center;
-  display: flex; /* Use flexbox for centering */
+  display: inline-flex;
   align-items: center; /* Vertically center content */
   justify-content: center; /* Horizontally center content */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: all 0.3s ease; /* Smooth transitions */
   font-weight: bold;
+  margin-bottom: 40px; /* Add some space from the bottom */
 }
 
 .recap-button:hover {
   background-color: #ff4081; /* Slightly darker pink on hover */
-  transform: translateY(-2px); /* Slight lift on hover */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Larger shadow on hover */
 }
 
-.recap-button:active {
-  transform: translateY(0); /* Reset transform on click */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Smaller shadow on click */
-}
-
 .heart-icon {
-    margin: 0 5px; /* Add some spacing around the hearts */
-    font-size: 1.2em;
-    animation: beat 1s infinite alternate;
-}
-
-
-@keyframes beat {
-    to { transform: scale(1.2); }
+  margin: 0 5px; /* Add some spacing around the hearts */
+  font-size: 1.2em;
+  animation: beat 1s infinite alternate;
 }

@@ -92,4 +92,27 @@
       transform: translateY(-5px);
     }
   }
-  
+ /* Falling Image Animation */
+.falling-image {
+  position: absolute;
+  top: -10%;
+  left: var(--random-x);  /* Fully random horizontal position */
+  width: 300px;  /* Reduce size for better spread */
+  height: auto;
+  opacity: 0;
+  animation: fall var(--random-duration) linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-50px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(10vh);
+    opacity: 0;
+  }
+}
+
+
+

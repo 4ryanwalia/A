@@ -9,14 +9,14 @@ import MemoriesPage from "./MemoriesPage";
 
 function App() {
     return (
-        <Router>
+    <Router basename="/Ashmi">
         <Routes>
-            <Route path="/" element={<ChatPage />} />
-            <Route path="/recap" element={<RecapPage />} />
-            <Route path="/try-again" element={<TryAgainPage />} />
-            <Route path="/yes" element={<YesPage />} />
-            <Route path="/listen" element={<ListenPage />} />
-            <Route path="/memories" element={<MemoriesPage />} />
+        <Route path="/" element={<ChatPage />} />
+        <Route path="/recap" element={<RecapPage />} />
+        <Route path="/try-again" element={<TryAgainPage />} />
+        <Route path="/yes" element={<YesPage />} />
+        <Route path="/listen" element={<ListenPage />} />
+        <Route path="/memories" element={<MemoriesPage />} />
         </Routes>
     </Router>
     

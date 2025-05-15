@@ -7,12 +7,11 @@ function YesPage() {
     document.title = "Wait... You Pressed Yes?";
   }, []);
 
-  const [audio] = useState(new Audio("/hey.mp3"));
+  const [audio] = useState(new Audio("hey.mp3"));
 
   useEffect(() => {
     audio.loop = true;
 
-    // Try autoplaying
     const tryAutoplay = () => {
       audio.play().catch(() => {
         console.warn("Autoplay blocked, waiting for user interaction.");
@@ -21,7 +20,6 @@ function YesPage() {
 
     tryAutoplay();
 
-    // Resume audio on click if blocked
     const enableAudio = () => {
       audio.play();
       document.removeEventListener("click", enableAudio);
@@ -31,7 +29,6 @@ function YesPage() {
     document.addEventListener("click", enableAudio);
     document.addEventListener("touchstart", enableAudio);
 
-    // **Pause music when the user leaves the tab**
     const handleVisibilityChange = () => {
       if (document.hidden) {
         audio.pause();
@@ -53,6 +50,29 @@ function YesPage() {
 
   return (
     <div className="yes-container">
+      {/* Falling Images Effect */}
+      {[...Array(10)].map((_, i) => {
+        const randomX = Math.random() * 100 + "vw"; // Random X position (0 to 100vw)
+        const randomDuration = Math.random() * 5 + 3 + "s"; // Random fall speed (3s - 8s)
+        const randomImage = i % 2 === 0 ? "002.png" : "009.png"; // Alternate between the two images
+
+        return (
+          <motion.img
+            key={i}
+            src={randomImage}
+            className="falling-image"
+            style={{
+              "--random-x": randomX,
+              "--random-duration": randomDuration,
+            }}
+          />
+        );
+      })}
+
+      {/* Manually Added Falling Images */}
+      <motion.img src="002.png" className="falling-image" style={{ "--random-x": "20vw", "--random-duration": "5s" }} />
+      <motion.img src="009.png" className="falling-image" style={{ "--random-x": "65vw", "--random-duration": "7.5s" }} />
+
       {/* Animated background effect */}
       <div className="animated-bg"></div>
 
@@ -73,7 +93,7 @@ function YesPage() {
         transition={{ duration: 2, delay: 1 }}
         className="yes-text"
       >
-        Idk what to even write here...  
+        Idk what to even write here...
       </motion.p>
 
       <motion.p
@@ -82,7 +102,7 @@ function YesPage() {
         transition={{ duration: 2.5, delay: 2 }}
         className="yes-text"
       >
-        Call me if it’s an actual yes... <span className="emoji"> 😶💭 </span>
+        Text me? if it’s an actual yes... <span className="emoji"> 😶💭 </span>
       </motion.p>
 
       {/* Final dramatic floating effect */}
@@ -92,7 +112,7 @@ function YesPage() {
         transition={{ duration: 3, delay: 3 }}
         className="yes-footer"
       >
-        (If you don’t, I’ll just assume you were messing with me. 👀)
+        (If you don’t, I’ll just assume you were messing with me. :( 👀)
       </motion.p>
     </div>
   );

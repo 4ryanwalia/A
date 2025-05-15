@@ -52,14 +52,39 @@ function TryAgainPage() {
 
   return (
     <div className="try-again-container">
-      <motion.h1
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="try-again-heading"
-      >
-        Would it have ended the same way if we had met now?
-      </motion.h1>
+ <motion.h1
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="try-again-heading"
+>
+  Would it have ended the same way if we had met now?  
+</motion.h1>
+
+<motion.p
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.5, delay: 0.5 }}
+  className="try-again-subtext"
+>
+  Would you like to give this all a second chance?  
+</motion.p>
+
+<motion.p
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 2, delay: 1 }}
+  className="try-again-subtext"
+>
+  Click on one of these..  
+</motion.p>
+<motion.p
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 2, delay: 1 }}
+  className="try-again-subtext"
+>
+</motion.p>
 
       <div className="options-container">
         {/* YES Box */}

@@ -2,7 +2,7 @@
   "name": "35",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://4ryanwalia.github.io/Ashmi1",
+  "homepage": "https://4ryanwalia.github.io/Ashmi",
   "dependencies": {
     "@testing-library/react": "^16.2.0",
     "framer-motion": "^12.5.0",
@@ -16,11 +16,13 @@
     "gh-pages": "^6.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+},
   "browserslist": {
     "production": [
       ">0.2%",

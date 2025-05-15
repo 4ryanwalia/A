@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion'; // Import motion
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // Import Link
+
 import "./App.css";
 
 function ChatPage() {
     useEffect(() => {
         document.title = "Can";
     }, []);
-
-    const handleRecapClick = () => {
-        window.open(window.location.origin + "/recap", "_blank");
-    };
 
     return (
         <div className="container">
@@ -38,12 +36,15 @@ function ChatPage() {
                 </motion.div>
 
                 <motion.div className="message right" initial={{ x: '100vw', opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 1.5, delay: 6 }}>
-                    ...
+                   got your answer thanks :)
                 </motion.div>
 
-                <button className='recap-button' onClick={handleRecapClick}>
-                    <span className="heart-icon">💖</span> dabavo <span className="heart-icon">💖</span>
-                </button>
+                {/* Use Link here instead of window.open */}
+                <Link to="/recap">
+                    <button className='recap-button'>
+                        <span className="heart-icon"></span> dabavo <span className="heart-icon"></span>
+                    </button>
+                </Link>
             </div>
         </div>
     );
